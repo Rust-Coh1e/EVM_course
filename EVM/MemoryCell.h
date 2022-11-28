@@ -7,7 +7,7 @@ class MemoryCell
 private:
 	int	status;
 public:
-	void Give_data(int & dur);
+	int Give_data();
 	int Show_status();
 	void Set_data();
 	void Set_status();

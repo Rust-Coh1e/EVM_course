@@ -10,6 +10,7 @@ public:
 		this->status = IS_NOT_USED;
 	};
 	int CheckIsUsed();
-	int Ask_Memory_Cell(int);
+	void SetStatus(int sts);
+	//int Ask_Memory_Cell(int);
 };
 

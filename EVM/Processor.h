@@ -9,6 +9,6 @@ private:
 	//int Comand_data_needed=0;		// the amount of the commands that need it
 public:
 	void Ask_for_data();
-	void Perform_calculation(int COM, int& dur);
+	int Perform_calculation(int COM);
 };
 

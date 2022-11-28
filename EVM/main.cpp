@@ -2,8 +2,9 @@
 
 int main() {
 	scheme1 zxc;
-	zxc.Perform_the_commands();
+	
 	zxc.Fill_COMMANDS_ARRAY();
+	zxc.Perform_the_commands();
 	//this->N = THE_AMOUNT_OF_THE_PROCMC;
 	//this->commands_amount = THE_AMOUNT_OF_COMMANDS;
 
