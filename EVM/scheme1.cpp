@@ -55,10 +55,11 @@ void scheme1::Fill_COMMANDS_ARRAY() {
 				(this->COMMANDS_ARRAY[i][helper_for_rnd] == 0) ||
 				(this->COMMANDS_ARRAY[i][helper_for_rnd] == 10 + (i + 1))   ||
 				(this->COMMANDS_ARRAY[i][helper_for_rnd] == 10 + (i + 1+ ind_h1))
-				) {
+
+		) {
 				helper_for_rnd = rand() % commands_amount;
 			}
-			(this->COMMANDS_ARRAY[i][helper_for_rnd]) = 10 + (i + 1 + ind_h1);
+			(this->COMMANDS_ARRAY[i][helper_for_rnd]) = 10 + (i + 1);
 		}
 
 		for (int j = 0; j < this->com_not_same_num; j++) {
@@ -74,7 +75,9 @@ void scheme1::Fill_COMMANDS_ARRAY() {
 			(this->COMMANDS_ARRAY[i][helper_for_rnd]) = 10 + (i + 1 + ind_h2);
 		}
 
-		if (i == 0) ind_h1 = (-1);
+		if (i == 0) {
+			ind_h1 = (-1); ind_h2 = (-1);
+		}
 		if (i == 1) ind_h2 = (-2);
 	}
 
@@ -87,8 +90,8 @@ void scheme1::Fill_COMMANDS_ARRAY() {
 	}
 
 	this->COMMANDS_ARRAY[0][0] = 11;
-	this->COMMANDS_ARRAY[1][0] = 12;
-	this->COMMANDS_ARRAY[2][0] = 13;
+	this->COMMANDS_ARRAY[1][0] = 11;
+	this->COMMANDS_ARRAY[2][0] = 11;
 
 	this->COMMANDS_ARRAY[0][1] = 11;
 	this->COMMANDS_ARRAY[1][1] = 00;
@@ -97,6 +100,10 @@ void scheme1::Fill_COMMANDS_ARRAY() {
 	this->COMMANDS_ARRAY[0][2] = 11;
 	this->COMMANDS_ARRAY[1][2] = 12;
 	this->COMMANDS_ARRAY[2][2] = 12;
+
+	this->COMMANDS_ARRAY[0][3] = 13;
+	this->COMMANDS_ARRAY[1][3] = 13;
+	this->COMMANDS_ARRAY[2][3] = 13;
 	*/
 	/////////////////////////////////////////////////////////////
 	
@@ -166,7 +173,7 @@ void scheme1::Perform_the_commands() {
 
 		while (!are_they_all_done) {
 
-			if (this->COMMANDS_ARRAY[0][i] / 10 == 1)
+			if ((this->COMMANDS_ARRAY[0][i] / 10 == 1) && (!is_the_task_done_first))
 			{
 				if (!(this->BUS.CheckIsUsed())) {
 					this->BUS.SetStatus(IS_USED);
@@ -188,7 +195,7 @@ void scheme1::Perform_the_commands() {
 
 			}
 
-			if (this->COMMANDS_ARRAY[1][i] / 10 == 1)
+			if (this->COMMANDS_ARRAY[1][i] / 10 == 1 && (!is_the_task_done_second))
 			{
 				if (!(this->BUS.CheckIsUsed())) {
 					this->BUS.SetStatus(IS_USED);
@@ -209,7 +216,7 @@ void scheme1::Perform_the_commands() {
 					}
 			}
 
-			if (this->COMMANDS_ARRAY[2][i] / 10 == 1)
+			if (this->COMMANDS_ARRAY[2][i] / 10 == 1 && (!is_the_task_done_third))
 			{
 				if (!(this->BUS.CheckIsUsed())) {
 					this->BUS.SetStatus(IS_USED);
@@ -249,7 +256,22 @@ void scheme1::Perform_the_commands() {
 	std::cout << std::endl << "All the tasks were complited under " << time_total << " cu's"
 		<< std::endl << std::endl;
 
+}
 
-	// Reading info by col
+void scheme1::Coppy_COMMANDS_ARRAY(int** copy) {
+	for (int i = 0; i < this->N; i++) {
+		for (int j = 0; j < commands_amount; j++) {
+			this->COMMANDS_ARRAY[i][j] = copy[i][j];
+		}
+	}
 
+	if (SHOW_HIDDEN_STAF_SUPREME) {
+		std::cout << "The massiv of tasks (copied)" << std::endl;
+		for (int i = 0; i < this->N; i++) {
+			for (int j = 0; j < commands_amount; j++) {
+				std::cout << this->COMMANDS_ARRAY[i][j] << " ";
+			}
+			std::cout << std::endl;
+		}
+	}
 }

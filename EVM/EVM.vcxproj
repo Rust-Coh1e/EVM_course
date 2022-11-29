@@ -133,6 +133,7 @@
     <ClCompile Include="MemoryCell.cpp" />
     <ClCompile Include="Processor.cpp" />
     <ClCompile Include="scheme1.cpp" />
+    <ClCompile Include="scheme2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bus.h" />
@@ -141,6 +142,7 @@
     <ClInclude Include="MemoryCell.h" />
     <ClInclude Include="Processor.h" />
     <ClInclude Include="scheme1.h" />
+    <ClInclude Include="scheme2.h" />
     <ClInclude Include="tags.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,10 +1,19 @@
 #include "scheme1.h"
+#include "scheme2.h"
 
 int main() {
-	scheme1 zxc;
+	scheme1 scheme_BUS;
+	scheme2 scheme_COM;
 	
-	zxc.Fill_COMMANDS_ARRAY();
-	zxc.Perform_the_commands();
+	scheme_BUS.Fill_COMMANDS_ARRAY();
+	scheme_BUS.Perform_the_commands();
+
+	std::cout << std::endl << "****************" << std::endl;
+	scheme_COM.Coppy_COMMANDS_ARRAY(scheme_BUS.COMMANDS_ARRAY);
+
+	scheme_COM.Perform_the_commands();
+
+
 	//this->N = THE_AMOUNT_OF_THE_PROCMC;
 	//this->commands_amount = THE_AMOUNT_OF_COMMANDS;
 

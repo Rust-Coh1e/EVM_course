@@ -5,10 +5,17 @@
 class Commutator
 {
 private:
-	int status[3];
+	int status[THE_AMOUNT_OF_THE_PROCMC];
 
 public:
-	int Check_status(int);
-	int Ask_Memory_Cell(int);
+	Commutator() {
+		for (int i = 0; i < THE_AMOUNT_OF_THE_PROCMC; i++)
+			status[i] = IS_NOT_USED;
+	}
+
+	int CheckStatus(int);
+	void SetStatus(int, int);
+
+	
 };
 
