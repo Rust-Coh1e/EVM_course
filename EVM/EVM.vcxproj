@@ -132,8 +132,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MemoryCell.cpp" />
     <ClCompile Include="Processor.cpp" />
-    <ClCompile Include="scheme1.cpp" />
-    <ClCompile Include="scheme2.cpp" />
+    <ClCompile Include="first.cpp" />
+    <ClCompile Include="second.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bus.h" />
@@ -141,8 +141,8 @@
     <ClInclude Include="libs.h" />
     <ClInclude Include="MemoryCell.h" />
     <ClInclude Include="Processor.h" />
-    <ClInclude Include="scheme1.h" />
-    <ClInclude Include="scheme2.h" />
+    <ClInclude Include="first.h" />
+    <ClInclude Include="second.h" />
     <ClInclude Include="tags.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

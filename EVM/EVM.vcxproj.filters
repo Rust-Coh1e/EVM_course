@@ -30,10 +30,10 @@
     <ClCompile Include="Commutator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="scheme1.cpp">
+    <ClCompile Include="first.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="scheme2.cpp">
+    <ClCompile Include="second.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,10 +56,10 @@
     <ClInclude Include="libs.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="scheme1.h">
+    <ClInclude Include="first.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="scheme2.h">
+    <ClInclude Include="second.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

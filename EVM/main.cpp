@@ -1,9 +1,17 @@
-#include "scheme1.h"
-#include "scheme2.h"
+#include "first.h"
+#include "second.h"
+
+
 
 int main() {
-	scheme1 scheme_BUS;
-	scheme2 scheme_COM;
+
+	int THE_AMOUNT_OF_COMMANDS;
+	std::cout << "Enter the number of commands" << std::endl << "->";
+	std::cin >> THE_AMOUNT_OF_COMMANDS;
+
+
+	first scheme_BUS = first(THE_AMOUNT_OF_COMMANDS);
+	second scheme_COM = second(THE_AMOUNT_OF_COMMANDS);
 	
 	scheme_BUS.Fill_COMMANDS_ARRAY();
 	scheme_BUS.Perform_the_commands();
@@ -14,22 +22,4 @@ int main() {
 	scheme_COM.Perform_the_commands();
 
 
-	//this->N = THE_AMOUNT_OF_THE_PROCMC;
-	//this->commands_amount = THE_AMOUNT_OF_COMMANDS;
-
-
-	/*
-	int** COMMANDS_ARRAY = new int* [THE_AMOUNT_OF_THE_PROCMC];
-
-	for (int i = 0; i < THE_AMOUNT_OF_THE_PROCMC; i++)
-	{
-		COMMANDS_ARRAY[i] = new int[THE_AMOUNT_OF_COMMANDS];
-	}
-	for (int i = 0; i < THE_AMOUNT_OF_THE_PROCMC; i++)
-	{
-		delete[] COMMANDS_ARRAY[i];
-	}
-	delete[] COMMANDS_ARRAY;
-
-	*/
 }

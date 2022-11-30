@@ -5,11 +5,11 @@
 class Commutator
 {
 private:
-	int status[THE_AMOUNT_OF_THE_PROCMC];
+	int status[NUM_OF_PROC];
 
 public:
 	Commutator() {
-		for (int i = 0; i < THE_AMOUNT_OF_THE_PROCMC; i++)
+		for (int i = 0; i < NUM_OF_PROC; i++)
 			status[i] = IS_NOT_USED;
 	}
 

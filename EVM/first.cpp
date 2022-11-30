@@ -1,12 +1,12 @@
-#include "scheme1.h"
+#include "first.h"
 
 
-void scheme1::Fill_COMMANDS_ARRAY() {
-	if (SHOW_HIDDEN_STAF) std::cout << "the amounts of commands " << commands_amount << std::endl;
-	this->com_no_data = this->commands_amount * 0.85;
-	this->com_data = commands_amount - (this->com_no_data);
+void first::Fill_COMMANDS_ARRAY() {
+	if (INFORM_OUTPUT) std::cout << "the amounts of commands " << NUM_of_CMD << std::endl;
+	this->com_no_data = this->NUM_of_CMD * 0.85;
+	this->com_data = NUM_of_CMD - (this->com_no_data);
 
-	if (SHOW_HIDDEN_STAF_SUPREME) std::cout << com_no_data << " " << com_data << std::endl;
+	if (INFORM_OUTPUT_PLUS) std::cout << com_no_data << " " << com_data << std::endl;
 
 	this->com_same_num = com_data * 0.80;
 	this->com_not_same_num = com_data - this->com_same_num;
@@ -15,12 +15,12 @@ void scheme1::Fill_COMMANDS_ARRAY() {
 		com_same_num++;
 	}
 	com_not_same_num = com_not_same_num / 2;
-	if (SHOW_HIDDEN_STAF_SUPREME) std::cout << com_same_num << " " << com_not_same_num << " " << com_not_same_num << std::endl;
+	if (INFORM_OUTPUT_PLUS) std::cout << com_same_num << " " << com_not_same_num << " " << com_not_same_num << std::endl;
 
 
 	///////////////////////////////////
 	for (int i = 0; i < this->N; i++) {
-		for (int j = 0; j < commands_amount; j++) {
+		for (int j = 0; j < NUM_of_CMD; j++) {
 			this->COMMANDS_ARRAY[i][j]=-5;
 		}
 	}
@@ -32,45 +32,45 @@ void scheme1::Fill_COMMANDS_ARRAY() {
 	for (int i = 0; i < this->N; i++) {
 		
 		for (int j = 0; j < this->com_no_data; j++) {
-			helper_for_rnd = rand() % commands_amount;
+			helper_for_rnd = rand() % NUM_of_CMD;
 			while(this->COMMANDS_ARRAY[i][helper_for_rnd] ==0) {
-				helper_for_rnd = rand() % commands_amount;
+				helper_for_rnd = rand() % NUM_of_CMD;
 			}
 			(this->COMMANDS_ARRAY[i][helper_for_rnd]) = 0;
 			//std::cout << i << " " << j << std::endl;
 		}
 		
 		for (int j = 0; j < this->com_same_num; j++) {
-			helper_for_rnd = rand() % commands_amount;
+			helper_for_rnd = rand() % NUM_of_CMD;
 			while ((this->COMMANDS_ARRAY[i][helper_for_rnd] == 0) ||
 				(this->COMMANDS_ARRAY[i][helper_for_rnd]) == (10+(i+1))) {
-				helper_for_rnd = rand() % commands_amount;
+				helper_for_rnd = rand() % NUM_of_CMD;
 			}
 			(this->COMMANDS_ARRAY[i][helper_for_rnd]) = 10+ (i + 1);
 		}
 
 		for (int j = 0; j < this->com_not_same_num; j++) {
-			helper_for_rnd = rand() % commands_amount;
+			helper_for_rnd = rand() % NUM_of_CMD;
 			while (
 				(this->COMMANDS_ARRAY[i][helper_for_rnd] == 0) ||
 				(this->COMMANDS_ARRAY[i][helper_for_rnd] == 10 + (i + 1))   ||
 				(this->COMMANDS_ARRAY[i][helper_for_rnd] == 10 + (i + 1+ ind_h1))
 
 		) {
-				helper_for_rnd = rand() % commands_amount;
+				helper_for_rnd = rand() % NUM_of_CMD;
 			}
 			(this->COMMANDS_ARRAY[i][helper_for_rnd]) = 10 + (i + 1);
 		}
 
 		for (int j = 0; j < this->com_not_same_num; j++) {
-			helper_for_rnd = rand() % commands_amount;
+			helper_for_rnd = rand() % NUM_of_CMD;
 			while (
 				(this->COMMANDS_ARRAY[i][helper_for_rnd] == 0) ||
 				(this->COMMANDS_ARRAY[i][helper_for_rnd] == 10 + (i + 1)) ||
 				(this->COMMANDS_ARRAY[i][helper_for_rnd] == 10 + (i + 1 + ind_h1)) ||
 				(this->COMMANDS_ARRAY[i][helper_for_rnd] == 10 + (i + 1  + ind_h2))
 				) {
-				helper_for_rnd = rand() % commands_amount;
+				helper_for_rnd = rand() % NUM_of_CMD;
 			}
 			(this->COMMANDS_ARRAY[i][helper_for_rnd]) = 10 + (i + 1 + ind_h2);
 		}
@@ -80,42 +80,15 @@ void scheme1::Fill_COMMANDS_ARRAY() {
 		}
 		if (i == 1) ind_h2 = (-2);
 	}
-
-
-
-	/////////////////__Block_to_chek_this_shit///////////////////
-	/*
-	for (int i = 0; i < this->N; i++) {
-		for (int j = 0; j < commands_amount; j++) this->COMMANDS_ARRAY[i][j] = 00;
-	}
-
-	this->COMMANDS_ARRAY[0][0] = 11;
-	this->COMMANDS_ARRAY[1][0] = 11;
-	this->COMMANDS_ARRAY[2][0] = 11;
-
-	this->COMMANDS_ARRAY[0][1] = 11;
-	this->COMMANDS_ARRAY[1][1] = 00;
-	this->COMMANDS_ARRAY[2][1] = 11;
-
-	this->COMMANDS_ARRAY[0][2] = 11;
-	this->COMMANDS_ARRAY[1][2] = 12;
-	this->COMMANDS_ARRAY[2][2] = 12;
-
-	this->COMMANDS_ARRAY[0][3] = 13;
-	this->COMMANDS_ARRAY[1][3] = 13;
-	this->COMMANDS_ARRAY[2][3] = 13;
-	*/
-	/////////////////////////////////////////////////////////////
-	
 	
 }
 
 
-void scheme1::Perform_the_commands() {
-	if (SHOW_HIDDEN_STAF) {
+void first::Perform_the_commands() {
+	if (INFORM_OUTPUT) {
 		std::cout << "The massiv of tasks" << std::endl;
 		for (int i = 0; i < this->N; i++) {
-			for (int j = 0; j < commands_amount; j++) {
+			for (int j = 0; j < NUM_of_CMD; j++) {
 				std::cout << this->COMMANDS_ARRAY[i][j] << " ";
 			}
 			std::cout << std::endl;
@@ -131,9 +104,9 @@ void scheme1::Perform_the_commands() {
 
 
 
-	int is_the_task_done_first = IT_WILL_BE_BAD;
-	int is_the_task_done_second = IT_WILL_BE_BAD;
-	int is_the_task_done_third = IT_WILL_BE_BAD;
+	int is_the_task_done_first = INDEFINITE;
+	int is_the_task_done_second = INDEFINITE;
+	int is_the_task_done_third = INDEFINITE;
 
 	int extra_waiting_time = 0;
 	int max_time = 0;
@@ -149,23 +122,24 @@ void scheme1::Perform_the_commands() {
 	3 - third proc
 	*/
 
-	for (int i = 0; i < this->commands_amount; i++) {
+	for (int i = 0; i < this->NUM_of_CMD; i++) {
 
+		if (INFORM_OUTPUT_PLUS) std::cout << "The cycle number " << i+1  << std::endl;
 		extra_waiting_time = 0;
 		
 		if (this->COMMANDS_ARRAY[0][i] == 00)
 		{
-			time_used_by_first = this->PROC[0].Perform_calculation(COMMAND_WITH_NO_MEMORY_USE);
+			time_used_by_first = this->PROC[0].Perform_calculation(CMD_NO_MEM);
 			is_the_task_done_first = YES;
 		}	else is_the_task_done_first = NO;
 		if (this->COMMANDS_ARRAY[1][i] == 00)
 		{
-			time_used_by_second = this->PROC[1].Perform_calculation(COMMAND_WITH_NO_MEMORY_USE);
+			time_used_by_second = this->PROC[1].Perform_calculation(CMD_NO_MEM);
 			is_the_task_done_second = YES;
 		}	else is_the_task_done_second = NO;
 		if (this->COMMANDS_ARRAY[2][i] == 00)
 		{
-			time_used_by_third = this->PROC[2].Perform_calculation(COMMAND_WITH_NO_MEMORY_USE);
+			time_used_by_third = this->PROC[2].Perform_calculation(CMD_NO_MEM);
 			is_the_task_done_third = YES;
 		}	else is_the_task_done_third = NO;
 
@@ -178,16 +152,15 @@ void scheme1::Perform_the_commands() {
 				if (!(this->BUS.CheckIsUsed())) {
 					this->BUS.SetStatus(IS_USED);
 					is_used_by_me = 1;
-					time_used_by_first = this->PROC[0].Perform_calculation(COMMAND_WITH_MEMORY_USE);
-					extra_waiting_time += ZERO_TIME_DURATION;
+					time_used_by_first = this->PROC[0].Perform_calculation(CMD_REQ_MEM);
+					
 				}
 				else 
 					if (is_used_by_me == 1) {
 						time_used_by_first +=	
 							this->MC[0].Give_data() +
-							this->PROC[0].Perform_calculation(COMMAND_WITH_MEMORY_USE___WAS_GIVEN);
-						time_used_by_first += extra_waiting_time - ZERO_TIME_DURATION;  // - Z_T_D caus with staf we did upper we add it two times - kostil koroche
-						extra_waiting_time += GIVING_MEMORY_TIME_DURATION +  ZERO_TIME_DURATION;
+							this->PROC[0].Perform_calculation(CMD_MEM_G);
+						extra_waiting_time += TIME_MEM;
 						is_the_task_done_first = YES;
 						this->BUS.SetStatus(IS_NOT_USED);
 						is_used_by_me = 0;
@@ -200,16 +173,16 @@ void scheme1::Perform_the_commands() {
 				if (!(this->BUS.CheckIsUsed())) {
 					this->BUS.SetStatus(IS_USED);
 					is_used_by_me = 2;
-					time_used_by_second = this->PROC[1].Perform_calculation(COMMAND_WITH_MEMORY_USE);
-					extra_waiting_time += ZERO_TIME_DURATION;
+					time_used_by_second = this->PROC[1].Perform_calculation(CMD_REQ_MEM);
+					
 				}
 				else
 					if (is_used_by_me == 2) {
 						time_used_by_second +=
 							this->MC[1].Give_data() +
-							this->PROC[1].Perform_calculation(COMMAND_WITH_MEMORY_USE___WAS_GIVEN);
-						time_used_by_second += extra_waiting_time - ZERO_TIME_DURATION;// - Z_T_D caus with staf we did upper we add it two times - kostil koroche
-						extra_waiting_time += GIVING_MEMORY_TIME_DURATION + ZERO_TIME_DURATION;
+							this->PROC[1].Perform_calculation(CMD_MEM_G);
+						time_used_by_second += extra_waiting_time;// - Z_T_D caus with staf we did upper we add it two times - kostil koroche
+						extra_waiting_time += TIME_MEM;
 						is_the_task_done_second = YES;
 						this->BUS.SetStatus(IS_NOT_USED);
 						is_used_by_me = 0;
@@ -221,16 +194,16 @@ void scheme1::Perform_the_commands() {
 				if (!(this->BUS.CheckIsUsed())) {
 					this->BUS.SetStatus(IS_USED);
 					is_used_by_me = 3;
-					time_used_by_third = this->PROC[2].Perform_calculation(COMMAND_WITH_MEMORY_USE);
-					extra_waiting_time += ZERO_TIME_DURATION;
+					time_used_by_third = this->PROC[2].Perform_calculation(CMD_REQ_MEM);
+					
 				}
 				else
 					if (is_used_by_me == 3) {
 						time_used_by_third +=
 							this->MC[2].Give_data() +
-							this->PROC[2].Perform_calculation(COMMAND_WITH_MEMORY_USE___WAS_GIVEN);
-						time_used_by_third += extra_waiting_time- ZERO_TIME_DURATION; // - Z_T_D caus with staf we did upper we add it two times - kostil koroche
-						extra_waiting_time += GIVING_MEMORY_TIME_DURATION + ZERO_TIME_DURATION;
+							this->PROC[2].Perform_calculation(CMD_MEM_G);
+						time_used_by_third += extra_waiting_time; // - Z_T_D caus with staf we did upper we add it two times - kostil koroche
+						extra_waiting_time += TIME_MEM;
 						is_the_task_done_third = YES;
 						this->BUS.SetStatus(IS_NOT_USED);
 						is_used_by_me = 0;
@@ -243,7 +216,7 @@ void scheme1::Perform_the_commands() {
 
 
 
-		if (SHOW_HIDDEN_STAF_SUPREME) {
+		if (INFORM_OUTPUT_PLUS) {
 			std::cout << time_used_by_first << " " << time_used_by_second << " "
 				<< time_used_by_third << std::endl;
 			std::cout << max_time << std::endl;
@@ -258,17 +231,17 @@ void scheme1::Perform_the_commands() {
 
 }
 
-void scheme1::Coppy_COMMANDS_ARRAY(int** copy) {
+void first::Coppy_COMMANDS_ARRAY(int** copy) {
 	for (int i = 0; i < this->N; i++) {
-		for (int j = 0; j < commands_amount; j++) {
+		for (int j = 0; j < NUM_of_CMD; j++) {
 			this->COMMANDS_ARRAY[i][j] = copy[i][j];
 		}
 	}
 
-	if (SHOW_HIDDEN_STAF_SUPREME) {
+	if (INFORM_OUTPUT_PLUS) {
 		std::cout << "The massiv of tasks (copied)" << std::endl;
 		for (int i = 0; i < this->N; i++) {
-			for (int j = 0; j < commands_amount; j++) {
+			for (int j = 0; j < NUM_of_CMD; j++) {
 				std::cout << this->COMMANDS_ARRAY[i][j] << " ";
 			}
 			std::cout << std::endl;

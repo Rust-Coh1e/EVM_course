@@ -7,32 +7,32 @@
 #include "MemoryCell.h"
 
 
-class scheme1
+class first
 {
 private:
-	Processor PROC[THE_AMOUNT_OF_THE_PROCMC];
-	MemoryCell MC[THE_AMOUNT_OF_THE_PROCMC];
+	Processor PROC[NUM_OF_PROC];
+	MemoryCell MC[NUM_OF_PROC];
 	Bus BUS;
 
 	//int time_cons;
 
 	int N;
 	
-	int commands_amount;
+	int NUM_of_CMD;
 	int com_no_data, com_data, com_same_num, com_not_same_num;
 public:
 	int** COMMANDS_ARRAY;
-	scheme1() {
-		this->N = THE_AMOUNT_OF_THE_PROCMC;
+	first(int THE_AMOUNT_OF_COMMANDS) {
+		this->N = NUM_OF_PROC;
 		COMMANDS_ARRAY = new int* [this->N];
-		this->commands_amount = THE_AMOUNT_OF_COMMANDS;
+		this->NUM_of_CMD = THE_AMOUNT_OF_COMMANDS;
 		for (int i = 0; i < this->N; i++)
 		{
-			COMMANDS_ARRAY[i] = new int[commands_amount];
+			COMMANDS_ARRAY[i] = new int[NUM_of_CMD];
 		}
 	}
 
-	~scheme1() {
+	~first() {
 		for (int i = 0; i < this->N; i++)
 		{
 			delete [] COMMANDS_ARRAY[i];
